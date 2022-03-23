@@ -26,8 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout/@v2
-      - name: Test migrations on Flyway Hub
-        uses: red-gate/flyway-hub-migration-test@v4
+#       - name: Test migrations on Flyway Hub
+#         uses: red-gate/flyway-hub-migration-test@v4
         with:
           projectName: flyway-test
           engine: postgres-13
