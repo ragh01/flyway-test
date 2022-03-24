@@ -1,40 +1,26 @@
-# This workflow uses Flyway Hub to test the Flyway database migrations in the 'sql' path(s).
-#
-# The workflow will run automatically against all pull requests that modify files under 'sql'.
-#
-# It will also run on all pushes to 'main' that modify files under 'sql'.
-#
-# In order to use this workflow you will need to create a Github Actions secret called
-# FLYWAY_HUB_ACCESS_TOKEN containing a valid Flyway Hub API access token.
-#
-name: Database Migration Tests with Flyway
-
+name: Main
 on:
-  push:
-    branches:
-    - 'main'
-    paths:
-      - 'sql/**'
-  pull_request:
-    paths:
-    - 'sql/**'
-  workflow_dispatch: {}
-
+  - push
+#   - workflow dispatch:
 jobs:
-  test-migrations:
-    name: Test flyway migration scripts
+  test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+#         env:
+#           POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
-      - uses: actions/checkout/@v2
-#       - name: Test migrations on Flyway Hub
-#         uses: red-gate/flyway-hub-migration-test@v4
-      - name: Test migrations on Flyway Hub
-        uses: ragh01/flyway-test/sql@v3
+      - uses: actions/checkout@v2
+      - uses: joshuaavalon/flyway-action@v1
         with:
-          projectName: flyway-test
-          engine: postgres-13
-          migrationDirs: sql 
-          flywayConfPath: flyway-test/conf/flyway.conf  
-          databaseName: flyway 
-env:
-  FLYWAYHUB_ACCESS_TOKEN: ${{ secrets.FLYWAY_HUB_ACCESS_TOKEN }}
+          url: jdbc:snowflake://xz41255.ap-south-1.aws.snowflakecomputing.com/?db=FLYWAY&warehouse=COMPUTE_WH&role=ACCOUNTADMIN
+          user: raghav_user
+          password: abc123
+          locations: ./sql
+      - run: echo 'testing'
