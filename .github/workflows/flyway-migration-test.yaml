@@ -26,6 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout/@v2
+      - run: flywayVersion = '8.5.4'
 #       - name: Test migrations on Flyway Hub
 #         uses: red-gate/flyway-hub-migration-test@v4
 # #       - name: Test migrations on Flyway Hub
