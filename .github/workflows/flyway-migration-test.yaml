@@ -19,8 +19,7 @@ on:
   pull_request:
     paths:
     - 'sql/**'
-  workflow_dispatch: {}
-
+  workflow_dispatch:
 jobs:
   test-migrations:
     name: Test flyway migration scripts
