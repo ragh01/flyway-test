@@ -29,7 +29,7 @@ jobs:
 #       - name: Test migrations on Flyway Hub
 #         uses: red-gate/flyway-hub-migration-test@v4
       - name: Test migrations on Flyway Hub
-        uses: ragh01/flyway-test@sql
+        uses: ragh01/flyway-test@V1
         with:
           projectName: flyway-test
           engine: postgres-13
