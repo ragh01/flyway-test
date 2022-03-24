@@ -24,5 +24,6 @@ jobs:
           user: raghav_user
           password: abc123
 #           locations: ./sql
+      - run: ./flyway repair
       - run: ./flyway --help
       - run: echo 'testing'
