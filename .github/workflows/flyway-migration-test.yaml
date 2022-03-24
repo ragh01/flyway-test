@@ -36,6 +36,6 @@ jobs:
           migrationDirs: sql 
           flywayConfPath: conf/flyway.conf  
           databaseName: flyway 
-      - run: flyway --help
+      - run: ./flyway --help
 env:
   FLYWAYHUB_ACCESS_TOKEN: ${{ secrets.FLYWAY_HUB_ACCESS_TOKEN }}
