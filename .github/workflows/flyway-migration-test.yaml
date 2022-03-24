@@ -31,7 +31,7 @@ jobs:
 #       - name: Test migrations on Flyway Hub
 #         uses: ragh01/flyway-test@sql/v1
         with:
-          projectName: flyway-test
+          projectName: flywayy
           engine: postgres-13
           migrationDirs: sql 
           flywayConfPath: conf/flyway.conf  
