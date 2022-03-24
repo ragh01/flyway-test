@@ -22,10 +22,10 @@ on:
 
 jobs:
   test-migrations:
-    name: Test flyway migration scripts
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout/@v2
+#     name: Test flyway migration scripts
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout/@v2
 #       - name: Test migrations on Flyway Hub
 #         uses: red-gate/flyway-hub-migration-test@v4
 # #       - name: Test migrations on Flyway Hub
@@ -36,9 +36,26 @@ jobs:
 #           migrationDirs: sql 
 #           flywayConfPath: conf/flyway.conf  
 #           databaseName: flyway 
-      - run: PATH=/flyway:$PATH
-      - run: chmod 744 drivers
-      - run: chmod +x ./flyway
-      - run: ./flyway --help
+#       - run: PATH=/flyway:$PATH
+#       - run: chmod 744 drivers
+#       - run: chmod +x ./flyway
+#       - run: ./flyway --help
+#       - name: ./Flyway Migration
+  # You may pin to the exact commit or the version.
+  # uses: joshuaavalon/flyway-action@3a2d033344e62315c7b4d2e1b6c9fcfea798e3e6
+  - name: Flyway Migration
+  # You may pin to the exact commit or the version.
+  # uses: joshuaavalon/flyway-action@3a2d033344e62315c7b4d2e1b6c9fcfea798e3e6
+    uses: joshuaavalon/flyway-action@v2
+    with:
+      # The jdbc url to use to connect to the database
+      url: jdbc:snowflake://xz41255.ap-south-1.aws.snowflakecomputing.com/?db=FLYWAY&warehouse=COMPUTE_WH&role=ACCOUNTADMIN
+      # The user to use to connect to the database
+      user: raghav_user
+      # The password to use to connect to the database
+      password: abc123
+      # Comma-separated list of locations to scan recursively for migrations
+      locations: ./sql
+
 env:
   FLYWAYHUB_ACCESS_TOKEN: ${{ secrets.FLYWAY_HUB_ACCESS_TOKEN }}
