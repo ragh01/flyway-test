@@ -35,7 +35,8 @@ jobs:
           engine: postgres-13
           migrationDirs: sql 
           flywayConfPath: conf/flyway.conf  
-          databaseName: flyway 
+          databaseName: flyway
+      - run: chmod +x ./flyway
       - run: ./flyway --help
 env:
   FLYWAYHUB_ACCESS_TOKEN: ${{ secrets.FLYWAY_HUB_ACCESS_TOKEN }}
