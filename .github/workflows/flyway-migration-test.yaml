@@ -17,12 +17,12 @@ jobs:
 #           --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - run: ./flyway --help
+#       - run: ./flyway --help
       - uses: joshuaavalon/flyway-action@v1
         with:
           url: jdbc:snowflake://xz41255.ap-south-1.aws.snowflakecomputing.com/?db=FLYWAY&warehouse=COMPUTE_WH&role=ACCOUNTADMIN
           user: raghav_user
           password: abc123
-          locations: ./sql
+#           locations: ./sql
       - run: ./flyway --help
       - run: echo 'testing'
