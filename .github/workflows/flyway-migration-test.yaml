@@ -38,6 +38,21 @@ jobs:
           databaseName: flyway
       - run: PATH=/flyway:$PATH
       - run: chmod 744 drivers
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/cloud/sql/postgres-socket-factory/1.2.0/postgres-socket-factory-1.2.0.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/cloud/sql/jdbc-socket-factory-core/1.2.0/jdbc-socket-factory-core-1.2.0.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/http-client/google-http-client/1.38.0/google-http-client-1.38.0.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/http-client/google-http-client-jackson2/1.38.0/google-http-client-jackson2-1.38.0.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/github/jnr/jnr-unixsocket/0.38.5/jnr-unixsocket-0.38.5.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/auth/google-auth-library-credentials/0.22.2/google-auth-library-credentials-0.22.2.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/auth/google-auth-library-oauth2-http/0.22.2/google-auth-library-oauth2-http-0.22.2.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.12.0/jackson-core-2.12.0.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/api-client/google-api-client/1.31.1/google-api-client-1.31.1.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/apis/google-api-services-sqladmin/v1beta4-rev76-1.25.0/google-api-services-sqladmin-v1beta4-rev76-1.25.0.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/io/opencensus/opencensus-api/0.28.2/opencensus-api-0.28.2.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/io/opencensus/opencensus-contrib-http-util/0.11.0/opencensus-contrib-http-util-0.11.0.jar
+      - run: wget -P drivers https://repo1.maven.org/maven2/io/grpc/grpc-context/1.0.1/grpc-context-1.0.1.jar
       - run: chmod +x ./flyway
 #       - run: ./flyway --help
       - run: ./flyway --migrate
