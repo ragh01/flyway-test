@@ -36,6 +36,8 @@ jobs:
           migrationDirs: sql 
           flywayConfPath: conf/flyway.conf  
           databaseName: flyway
+      - run: PATH=/flyway:$PATH
+      - run: chmod 744 drivers
       - run: chmod +x ./flyway
 #       - run: ./flyway --help
       - run: ./flyway --migrate
