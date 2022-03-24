@@ -8,8 +8,7 @@
 # FLYWAY_HUB_ACCESS_TOKEN containing a valid Flyway Hub API access token.
 #
 name: Database Migration Tests with Flyway
-FLYWAY_VERSION=8.5.4
-
+# FLYWAY_VERSION=8.5.4
 on:
   push:
     branches:
@@ -19,7 +18,7 @@ on:
   pull_request:
     paths:
     - 'sql/**'
-  workflow_dispatch:
+  workflow_dispatch: {}
 jobs:
   test-migrations:
     name: Test flyway migration scripts
