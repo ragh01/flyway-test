@@ -1,0 +1,21 @@
+# Snowflake Database Object Migration
+# This is a sample script for demostration purpose
+
+variables:
+  - group: SNOWFLAKE.DATABASE
+
+trigger:
+  - main
+
+jobs:
+  - job: demo_dev_ops_ci_cd
+    timeoutInMinutes: 10
+    pool:
+      vmImage: ubuntu-latest
+    container:
+      image: flyway/flyway-azure:latest-alpine
+    steps:
+      - script: flyway -configFiles=./db_sql_scripts/flyway_prod.conf -user=$(SNOWFLAKE_DEVOPS_USERNAME) -password=$(SNOWFLAKE_DEVOPS_SECRET) info
+        name: DB_Objects_Info
+      - script: flyway -configFiles=./db_sql_scripts/flyway_prod.conf -user=$(SNOWFLAKE_DEVOPS_USERNAME) -password=$(SNOWFLAKE_DEVOPS_SECRET) -X migrate
+        name: Build_DB_Objects
